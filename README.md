@@ -70,7 +70,7 @@ The `data/`, `input/` and `output/` folders are created locally when needed and 
 python -m unittest discover -s tests -v
 ```
 
-See [QA_CHECKLIST.md](QA_CHECKLIST.md) for the checks completed and remaining limitations. The tests use temporary SQLite databases and fictional records. They do not require a graphical display. A separate Tkinter launch smoke test can be run on a computer with a desktop display.
+
 
 ## Design notes
 
