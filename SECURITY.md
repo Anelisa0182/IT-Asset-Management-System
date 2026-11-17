@@ -21,10 +21,5 @@ This repository is a **demonstration desktop application**, not a production sec
 - Do not use real staff details, credentials, real serial numbers, confidential asset inventories or employer information in public demonstrations.
 - The bundled tests cover selected functionality and security-sensitive paths, not every possible workflow or operating-system configuration.
 
-## Before a real deployment
 
-Use an approved architecture with centrally enforced authorization, protected database storage, secure backups, event auditing, stronger authentication and security review. Obtain organizational permission before publishing or deploying employer-owned code.
 
-## Reporting vulnerabilities
-
-Do not post passwords, real records or exploit details in public GitHub issues. Share a minimal fictional reproduction privately with the maintainer.
