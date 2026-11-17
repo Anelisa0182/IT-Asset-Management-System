@@ -1,143 +1,88 @@
-# IT-Asset-Management-System
-Python desktop application for IT asset tracking, employee verification, depreciation and warranty management.
+# IT Asset Management System — Portfolio Edition
 
-### Python | Tkinter | SQLite | Desktop Application Development
+A Python desktop application for managing and verifying IT assets. Built with **Tkinter**, **SQLite**, **pandas** and **openpyxl**. This repository is a **local demonstration**, intended for learning and portfolio review, using **fictional sample data only**.
 
-A desktop-based IT Asset Management System developed using **Python, Tkinter and SQLite** to simplify the registration, tracking, allocation and verification of organisational IT assets.
+## Features
 
-The application is designed to improve asset accountability, automate lifecycle calculations and provide a centralised platform for managing IT equipment.
+- Login with first-run administrator setup; salted PBKDF2-SHA256 password hashes
+- Administrator, IT Officer, Employee and Viewer interface roles
+- Employee view restricted to assets linked to the signed-in employee; employee verification checks the account-to-asset link in the database
+- Add assets, assign assets, transfer assets and track repairs and returns
+- Import and synchronise CSV/XLSX asset registers, with preview and duplicate detection
+- Warranty status, straight-line depreciation, useful-life calculations and book-value summaries
+- Asset history and audit transactions
+- Excel audit report with dashboard, register, duplicate and data-quality worksheets
+- Resizable interface, zoom controls and date pickers
 
-## Project Overview
+## Requirements
 
-Managing IT assets manually can lead to inaccurate records, limited visibility, inefficient verification processes and difficulties monitoring asset depreciation and warranty status.
+- **Python 3.10+** with Tkinter (included with the standard Windows Python installer)
+- Windows recommended for the desktop interface; Tkinter also works on many Linux/macOS systems with a graphical display
+- Python packages listed in `requirements.txt`
 
-The IT Asset Management System addresses these challenges through a database-driven desktop application with a graphical user interface.
+## Run the application
 
-The system supports asset administrators and employees through controlled access to relevant asset information.
+Open a terminal in the extracted project folder:
 
-## Key Features
+```bash
+python -m pip install -r requirements.txt
+python Real_Test.py
+```
 
-### 1. User Authentication
-- Login functionality
-- Access to system functionality based on user roles
-- Sign-out functionality
+On Windows, you can alternatively double-click `start_windows.bat` after Python and the dependencies are installed.
 
-### 2. IT Asset Registration and Management
-- Register new IT assets
-- Maintain asset information
-- Track assigned equipment
-- View and manage asset records
+At first launch, **create your own administrator account**. There are no pre-set usernames or passwords. Local SQLite files are created automatically under `data/` and are **excluded from Git**.
 
-### 3. Employee Asset Verification
-- Employees can view assets assigned to them
-- Employees can verify their assigned assets
-- Access restrictions prevent employees from verifying other employees' assets
+## Try the fictional demonstration data
 
-### 4. Automated Asset Calculations
-- Asset lifespan calculations
-- Depreciation calculations
-- Current asset value calculations
+1. Create an administrator account and sign in.
+2. Copy `demo_data/sample_assets.csv` into the `input/` folder (create `input/` if needed).
+3. Select **Import & Synchronise** in the application, review the results and confirm the import.
+4. Open **Dashboard / View All**, search for an asset or view its details.
+5. Optionally create an **Employee** account using **Manage Users**, then link a demo asset to that account through **Link Assignments**. Sign in as that employee to try **My Assets** and **Verify My Asset**.
+6. Select **Export Audit Report** to create an Excel workbook under `output/`.
 
-### 5. Warranty Management
-- Monitor asset warranty information
-- Identify assets within or outside their warranty period
+**Important:** The sample CSV contains invented asset IDs, facilities, suppliers and serial numbers. Never add genuine workplace asset registers, real staff records or account databases to this repository.
 
-### 6. Graphical User Interface
-- Desktop interface developed with Tkinter
-- User-friendly navigation
-- Date selection controls
-- Adjustable interface viewing options
+## Project structure
 
-### 7. Database Integration
-- SQLite relational database
-- Persistent storage of asset information
-- Database-driven asset retrieval and management
+```text
+IT_Asset_Management_GitHub_Ready/
+├── Real_Test.py             # Application entry point, import and reporting logic
+├── gui.py                   # Tkinter user interface and login workflow
+├── database.py              # SQLite schema, asset operations and authentication
+├── requirements.txt         # Third-party Python dependencies
+├── start_windows.bat        # Windows launcher
+├── demo_data/
+│   └── sample_assets.csv    # Fictional import data
+├── tests/
+│   └── test_application.py  # Automated backend tests
+├── SECURITY.md              # Security scope and limitations
+├── QA_CHECKLIST.md          # Tests performed and remaining checks
+├── README.md
+└── .gitignore               # Excludes live data, reports and local secrets
+```
 
-## Technology Stack
+The `data/`, `input/` and `output/` folders are created locally when needed and should never be committed with real records.
 
-| Technology | Purpose |
-|---|---|
-| Python | Core application development and business logic |
-| Tkinter | Desktop graphical user interface |
-| SQLite | Relational database and data persistence |
-| SQL | Database queries and data management |
-| Git and GitHub | Version control and project documentation |
+## Run automated tests
 
-## Application Architecture
+```bash
+python -m unittest discover -s tests -v
+```
 
-The application separates its core functionality into Python modules.
+See [QA_CHECKLIST.md](QA_CHECKLIST.md) for the checks completed and remaining limitations. The tests use temporary SQLite databases and fictional records. They do not require a graphical display. A separate Tkinter launch smoke test can be run on a computer with a desktop display.
 
-**Main application (`Real_Test.py`)**
+## Design notes
 
-Provides the application entry point.
+The program uses a local SQLite database, not a central server. Interface role restrictions are appropriate for demonstrating the workflow, but **do not make a shared or compromised workstation a secure multi-user environment**. Users who can read or modify the SQLite database directly can bypass application-level controls. See [SECURITY.md](SECURITY.md) before using the software beyond a portfolio demo.
 
-**Graphical interface (`gui.py`)**
+Depreciation uses a configurable useful life (five years by default), straight-line calculation and a default residual value of zero. These are demonstration assumptions, not an accounting policy recommendation.
 
-Manages user interaction, application screens and interface controls.
+## Public sharing
 
-**Database module (`database.py`)**
+Publish this portfolio edition only if you have the right to share the underlying source code. Removing workplace data does **not** by itself establish ownership or permission to publish employer-developed software. If permission is unclear, keep the repository private and build an independently written public demo.
 
-Handles database connectivity and data operations.
+## Author
 
-This modular approach supports code organisation, maintenance and future improvements.
-
-## Example Application Workflow
-
-1. A user logs into the application.
-2. The system provides access to the relevant functionality.
-3. An administrator manages IT asset records and assignments.
-4. An employee views assets assigned to them.
-5. The employee verifies their own assets.
-6. The system maintains asset information and performs relevant lifecycle calculations.
-
-## Skills Demonstrated
-
-This project demonstrates practical experience in:
-
-- Python Software Development
-- Desktop Application Development
-- Database Design and SQL
-- User Authentication and Access Control
-- Business Logic Implementation
-- Automated Calculations
-- GUI Design
-- Debugging and Troubleshooting
-- Software Maintenance
-
-## Screenshots and Demonstration
-
-Application screenshots and a demonstration of the public portfolio version will be added.
-
-## Installation and Running the Application
-
-Installation instructions and a sample database will be provided when the public demonstration version is prepared and tested.
-
-## Future Enhancements
-
-Potential improvements include:
-
-- Advanced reporting and dashboards
-- Asset audit reports
-- Data export functionality
-- Additional asset lifecycle reporting
-- Improved application deployment and packaging
-
-## Data Privacy and Project Availability
-
-This repository is being prepared as a professional software development portfolio project.
-
-Any public demonstration will use synthetic data and exclude confidential organisational information, employee records, credentials and proprietary materials that are not authorised for publication.
-
-## Developer
-
-**Anelisa Mthwazi**
-
-Software Developer
-
-Bachelor Honours in ICT Applications Development
-
-**GitHub:** [Anelisa0182](https://github.com/Anelisa0182)
-
-## Project Status
-
-Portfolio documentation in progress. Public demonstration version being prepared.
+Software Developer — Python desktop applications, data management and IT asset workflows.
