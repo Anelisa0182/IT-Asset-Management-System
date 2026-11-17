@@ -58,7 +58,6 @@ IT_Asset_Management_GitHub_Ready/
 ├── tests/
 │   └── test_application.py  # Automated backend tests
 ├── SECURITY.md              # Security scope and limitations
-├── QA_CHECKLIST.md          # Tests performed and remaining checks
 ├── README.md
 └── .gitignore               # Excludes live data, reports and local secrets
 ```
