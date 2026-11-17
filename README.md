@@ -78,10 +78,7 @@ The program uses a local SQLite database, not a central server. Interface role r
 
 Depreciation uses a configurable useful life (five years by default), straight-line calculation and a default residual value of zero. These are demonstration assumptions, not an accounting policy recommendation.
 
-## Public sharing
-
-Publish this portfolio edition only if you have the right to share the underlying source code. Removing workplace data does **not** by itself establish ownership or permission to publish employer-developed software. If permission is unclear, keep the repository private and build an independently written public demo.
 
 ## Author
 
-Software Developer — Python desktop applications, data management and IT asset workflows.
+Anelisa Mthwazi
